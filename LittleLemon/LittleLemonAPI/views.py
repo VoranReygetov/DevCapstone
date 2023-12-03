@@ -18,6 +18,7 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
     permission_classes = [IsAuthenticated]
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+    
 from rest_framework import viewsets
 class menuViewSet(viewsets.ModelViewSet):    
     queryset = MenuItem.objects.all()

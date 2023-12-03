@@ -15,7 +15,7 @@ class MenuViewTest(TestCase):
         response = self.client.get("/api/menu-items/")
         items = MenuItem.objects.all()
         serializer = MenuItemSerializer(items, many=True)
-        self.assertEqual(response, serializer.data)
+        self.assertEqual(response.data, serializer.data)
 
     def test_getone(self):
         item = MenuItem.objects.create(title="DishA", price=50, inventory=25)

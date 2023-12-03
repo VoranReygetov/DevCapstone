@@ -1,13 +1,12 @@
 from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from .models import *
-from rest_framework import permissions
 from .serializers import *
-# Create your views here.
-
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
@@ -40,4 +39,4 @@ class BookingViewSet(ModelViewSet):
 
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
-    # permission_classes = [permissions.IsAuthenticated] 
+    permission_classes = [IsAuthenticated] 
