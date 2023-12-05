@@ -18,7 +18,7 @@ class BookingView(APIView):
         serializer = BookingSerializer(items, many=True)
         return Response(serializer.data)
     
-class MenugView(APIView):
+class MenuView(APIView):
     
     def get(self, request):
         items = Menu.objects.all()
@@ -30,7 +30,7 @@ class MenuItemsView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
-class SingleMenuItemView(generics.RetrieveUpdateAPIView):
+class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
 
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
